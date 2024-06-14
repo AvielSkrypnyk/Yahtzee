@@ -1,0 +1,2 @@
+# Yathzee
+ Yathzee in python
