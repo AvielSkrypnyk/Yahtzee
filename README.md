@@ -1,6 +1,6 @@
 ## Getting Started
 
-To get started with Yathzee, follow these steps:
+To get started with Yahtzee, follow these steps:
 
 1. Make sure you have Git installed on your computer. If not, you can install it by following the instructions below based on your operating system:
 
@@ -25,10 +25,10 @@ To get started with Yathzee, follow these steps:
 
 2. Clone the repository to your local machine:
     ```shell
-    git clone https://github.com/AvielSrypnyk/Yathzee.git
+    git clone https://github.com/AvielSrypnyk/Yahtzee.git
     ```
 
-3. Install the required dependencies. Yathzee uses the `termcolor` library for colored output. You can install it using pip:
+3. Install the required dependencies. Yahtzee uses the `termcolor` library for colored output. You can install it using pip:
     ```shell
     pip install termcolor
     ```
@@ -38,15 +38,15 @@ To get started with Yathzee, follow these steps:
 5. Run the game:
     - For Windows:
       ```shell
-      python yathzee.py
+      python yahtzee.py
       ```
     - For Linux or macOS:
       ```shell
-      python3 yathzee.py
+      python3 yahtzee.py
       ```
 
 ## Contributing
-If you'd like to contribute to Yathzee, please follow these guidelines:
+If you'd like to contribute to yahtzee, please follow these guidelines:
 1. Fork the repository.
 
 2. Create a new branch:
