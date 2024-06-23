@@ -1,4 +1,5 @@
 # main.py
+#* Thats one is working version of the game
 
 from test_data import dice, scorecard
 from test_functions import roll_dice, reroll_dice, print_dice, print_scorecard, calculate_score, update_scorecard
