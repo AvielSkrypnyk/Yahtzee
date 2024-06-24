@@ -2,7 +2,7 @@
 #* Thats one is working version of the game
 
 from test_data import dice, scorecard
-from test_functions import roll_dice, reroll_dice, print_dice, print_scorecard, calculate_score, update_scorecard
+from test_functions import *
 
 def main():
     print("Welcome to Yahtzee!")
@@ -13,8 +13,10 @@ def main():
         roll_dice()
         print_dice()
         
-        for i in range(2):  # Allow up to 2 rerolls
-            keep = input("Enter dice to keep (e.g., 'Y Y N N Y' for 1st, 2nd, and 5th dice): ").split()
+        for i in range(2):  #* Allow up to 2 rerolls
+            keep = check_input_list("Enter dice to keep (e.g., 'Y Y N N Y' for 1st, 2nd, and 5th dice): ", ['Y', 'N'])
+            print(keep)
+            #keep = input("Enter dice to keep (e.g., 'Y Y N N Y' for 1st, 2nd, and 5th dice): ").split()
             keep = [k == 'Y' for k in keep]
             reroll_dice(keep)
             print_dice()

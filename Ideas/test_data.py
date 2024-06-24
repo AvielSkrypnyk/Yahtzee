@@ -1,10 +1,10 @@
 # data.py
 
-# Dice rolls will be stored in a list
+#* Dice rolls will be stored in a list
 dice = [0, 0, 0, 0, 0]
 
-# Player's scorecard (initially empty)
-scorecard = {
+#* Player's scorecard (initially empty)
+scorecard: dict[str, int|None] = {
     "ones": None,
     "twos": None,
     "threes": None,

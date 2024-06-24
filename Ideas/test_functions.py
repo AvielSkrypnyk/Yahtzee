@@ -2,18 +2,36 @@
 
 import random
 from test_data import dice, scorecard
+from termcolor import colored
+
+def check_input(prompt: str, valid_inputs: list[str]) -> str:
+    """Prompts the user for input and checks if it is valid."""
+    while True:
+        user_input = input(prompt)
+        if user_input in valid_inputs:
+            return user_input
+        print(colored("Invalid input!" , "red" , attrs = ["bold"]))
+
+def check_input_list(prompt: str, valid_inputs: list[str]) -> list[str]:
+    """Prompts the user for input and checks if it is valid."""
+    while True:
+        user_inputs = input(prompt).upper().split()
+        valid = True
+        for user_input in user_inputs:
+            if not user_input in valid_inputs:
+                valid = False
+        if valid:
+            return user_inputs
+        print(colored("Invalid input!" , "red" , attrs = ["bold"]))
+
 
 def roll_dice():
     """Rolls five dice and updates the dice list."""
     for i in range(5):
         dice[i] = random.randint(1, 6)
 
-def reroll_dice(keep):
-    """Rerolls the dice that the player does not want to keep.
-    
-    Args:
-        keep (list): A list of booleans indicating which dice to keep.
-    """
+def reroll_dice(keep: list[bool]):
+    """Rerolls the dice that the player does not want to keep."""
     for i in range(5):
         if not keep[i]:
             dice[i] = random.randint(1, 6)
@@ -24,18 +42,15 @@ def print_dice():
 
 def print_scorecard():
     """Prints the current scorecard."""
+    print()
+    print('-' * 20)
     for category, score in scorecard.items():
         print(f"{category}: {score}")
+    print('-' * 20)
+    print()
 
-def calculate_score(category):
-    """Calculates the score for a given category.
-    
-    Args:
-        category (str): The category to calculate the score for.
-    
-    Returns:
-        int: The calculated score.
-    """
+def calculate_score(category: str) -> int:
+    """Calculates the score for a given category."""
     if category == "ones":
         return dice.count(1) * 1
     elif category == "twos":
@@ -72,13 +87,8 @@ def calculate_score(category):
         return sum(dice)
     return 0
 
-def update_scorecard(category, score):
-    """Updates the scorecard with the score for the given category.
-    
-    Args:
-        category (str): The category to update.
-        score (int): The score to set.
-    """
+def update_scorecard(category: str, score: int):
+    """Updates the scorecard with the score for the given category."""
     if scorecard[category] is None:
         scorecard[category] = score
     else:

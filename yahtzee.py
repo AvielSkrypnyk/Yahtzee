@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # yahtzee.py
 #! This version of the game in beta version thats why it is not working properly
 
