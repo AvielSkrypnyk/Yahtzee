@@ -1,5 +1,3 @@
-# functions.py
-
 import random
 from data import dice, scorecard
 from termcolor import colored
@@ -10,20 +8,21 @@ def check_input(prompt: str, valid_inputs: list[str]) -> str:
         user_input = input(prompt)
         if user_input in valid_inputs:
             return user_input
-        print(colored("Invalid input!" , "red" , attrs = ["bold"]))
+        print(colored("Invalid input!", "red", attrs=["bold"]))
 
-def check_input_list(prompt: str, valid_inputs: list[str]) -> list[str]:
+def check_input_list(prompt: str, valid_inputs: list[str], required: int|None = None) -> list[str]:
     """Prompts the user for input and checks if it is valid."""
     while True:
         user_inputs = input(prompt).upper().split()
         valid = True
+        if len(user_inputs) != required:
+            valid = False
         for user_input in user_inputs:
             if not user_input in valid_inputs:
                 valid = False
         if valid:
             return user_inputs
-        print(colored("Invalid input!" , "red" , attrs = ["bold"]))
-
+        print(colored("Invalid input!", "red", attrs=["bold"]))
 
 def roll_dice():
     """Rolls five dice and updates the dice list."""
@@ -32,7 +31,7 @@ def roll_dice():
 
 def reroll_dice(keep: list[bool]):
     """Rerolls the dice that the player does not want to keep."""
-    for i in range(5):
+    for i in range(len(keep)):
         if not keep[i]:
             dice[i] = random.randint(1, 6)
 
@@ -89,7 +88,9 @@ def calculate_score(category: str) -> int:
 
 def update_scorecard(category: str, score: int):
     """Updates the scorecard with the score for the given category."""
-    if scorecard[category] is None:
+    if not category in scorecard:
+        print("Invalid category!")
+    elif scorecard[category] is None:
         scorecard[category] = score
     else:
         print("Category already filled!")
